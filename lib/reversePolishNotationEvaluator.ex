@@ -2,7 +2,7 @@ defmodule ReversePolishNotationEvaluator do
 
   require IEx
 
-  @spec main(String.t) :: :ok
+  @spec main(any) :: :ok
   def main(_) do
     string = IO.gets "Enter polish notation expression :"
 
@@ -26,7 +26,8 @@ defmodule ReversePolishNotationEvaluator do
     end
   end
 
-  @spec reduce_token({:ok, (number, number -> number)} | {:ok, number}, [number]) :: [number]
+  #@spec reduce_token({:ok, ((number, number) -> number) | number}, [number]) :: [number,...]
+  @spec reduce_token({:ok, ((any, any) -> any) | number}, [any]) :: [any,...]
   def reduce_token(elem, acc) do
     case elem do
       {:ok, n} when is_number(n) ->
@@ -49,13 +50,13 @@ defmodule ReversePolishNotationEvaluator do
     end
   end
 
-  @spec input_parsable?(String.t) :: boolean
+  #@spec input_parsable?(binary) :: boolean
+  @spec input_parsable?(binary) :: any #boolean
   def input_parsable?(string) do
     splitted = String.split(string, " ")
     parse_and = fn (elem, acc) ->
       is_token_valid = ReversePolishNotationEvaluator.token_valid?(elem)
-      result = is_token_valid && acc
-      result
+      is_token_valid and acc
       end
     Enum.reduce(splitted, true, parse_and)
   end
