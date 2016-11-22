@@ -10,7 +10,7 @@ defmodule ReversePolishNotationEvaluator.Mixfile do
      start_permanent: Mix.env == :prod,
      escript: [main_module: ReversePolishNotationEvaluator],
      deps: deps(),
-     dialyzer: [plt_add_deps: :transitive, flags: ["-Wunmatched_returns", "-Werror_handling", "-Wrace_conditions", "-Wunderspecs", "-Wspecdiffs"]]
+     dialyzer: [plt_add_deps: :transitive, flags: ["-Wunmatched_returns", "-Werror_handling", "-Wrace_conditions", "-Wunderspecs", "-Wunknown", "-Wspecdiffs"]]
     ]
   end
 
